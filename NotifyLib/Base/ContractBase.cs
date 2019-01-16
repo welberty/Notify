@@ -7,22 +7,11 @@ namespace NotifyLib.Base
 {
 	public abstract class ContractBase : IContractBase
 	{
-		private List<IRuleBase> rules;
-
-		public ContractBase()
-		{
-			rules = new List<IRuleBase>();
-		}
-
-		public IContractBase AddRule(IRuleBase rule)
-		{
-			rules.Add(rule);
-			return this;
-		}
-
+		public abstract IList<IRuleBase> Rules();
+		
 		public void Validate(INotifiableBase obj)
 		{
-			foreach (var item in rules)
+			foreach (var item in Rules())
 			{
 				var test = item.Test(obj);
 				if (!test)

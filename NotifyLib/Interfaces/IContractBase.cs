@@ -1,9 +1,13 @@
 ﻿
+using System.Collections.Generic;
+
 namespace NotifyLib.Interfaces
 {
 	public interface IContractBase
 	{	
 		void Validate(INotifiableBase obj);
-		IContractBase AddRule(IRuleBase rule);
+		IList<IRuleBase> Rules();
+
+		//IContractBase AddRule(IRuleBase rule);
 	}
 }
